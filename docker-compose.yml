@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: certiblock
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      APP_URL: http://localhost:5000
+      FRONTEND_URL: http://localhost:8080
+      PUBLIC_VERIFY_BASE_URL: http://localhost:8080/verify
+      CORS_ORIGIN: http://localhost:8080
+      DB_DIALECT: postgres
+      DATABASE_URL: postgres://postgres:password@postgres:5432/certiblock
+      JWT_SECRET: replace-with-a-long-secret
+      JWT_EXPIRES_IN: 1d
+      ENCRYPTION_KEY: replace-with-a-32-byte-secret
+      RPC_URL: http://host.docker.internal:8545
+      PRIVATE_KEY: replace-with-wallet-private-key
+      CONTRACT_ADDRESS: replace-with-sepolia-contract-address
+      POLYGON_CONTRACT_ADDRESS: replace-with-polygon-contract-address
+      ADMIN_REGISTRATION_KEY: replace-with-admin-bootstrap-key
+      MAX_UPLOAD_SIZE_MB: 10
+      AUTH_RATE_LIMIT_MAX: 20
+      API_RATE_LIMIT_MAX: 120
+      VERIFICATION_RATE_LIMIT_MAX: 60
+    ports:
+      - '5000:5000'
+
+  frontend:
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - '8080:80'
+
+volumes:
+  postgres-data:

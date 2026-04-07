@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Platform Admin",
+    "email": "admin@northwind.edu",
+    "role": "admin",
+    "institutionName": "Northwind Institute of Technology"
+  },
+  {
+    "name": "Registrar Team",
+    "email": "issuer@northwind.edu",
+    "role": "issuer",
+    "institutionName": "Northwind Institute of Technology"
+  },
+  {
+    "name": "Employer Verifier",
+    "email": "verifier@talentgrid.com",
+    "role": "verifier",
+    "institutionName": "TalentGrid"
+  }
+]

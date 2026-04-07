@@ -1,0 +1,25 @@
+{
+  "info": {
+    "name": "CertiBlock API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{apiBaseUrl}}/api/auth/login", "host": ["{{apiBaseUrl}}"], "path": ["api", "auth", "login"] },
+        "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@northwind.edu\",\n  \"password\": \"password123\"\n}" }
+      }
+    },
+    {
+      "name": "Verify Certificate By ID",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{apiBaseUrl}}/api/certificates/verify/CERT-2026-DEMO01", "host": ["{{apiBaseUrl}}"], "path": ["api", "certificates", "verify", "CERT-2026-DEMO01"] }
+      }
+    }
+  ],
+  "variable": [{ "key": "apiBaseUrl", "value": "http://localhost:5000" }]
+}

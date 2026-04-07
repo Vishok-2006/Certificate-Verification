@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f3efe7;
+  --surface: rgba(255, 251, 245, 0.82);
+  --card: rgba(255, 255, 255, 0.72);
+  --card-strong: rgba(255, 255, 255, 0.95);
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #0f766e;
+  --accent-foreground: #f7fffd;
+  --border: rgba(15, 23, 42, 0.08);
+  --danger: #dc2626;
+  --success: #15803d;
+  --warning: #b45309;
+}
+
+:root[data-theme='dark'] {
+  --bg: #111827;
+  --surface: rgba(17, 24, 39, 0.82);
+  --card: rgba(31, 41, 55, 0.72);
+  --card-strong: rgba(31, 41, 55, 0.92);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #14b8a6;
+  --accent-foreground: #052e2b;
+  --border: rgba(148, 163, 184, 0.14);
+  --danger: #f87171;
+  --success: #4ade80;
+  --warning: #fbbf24;
+}
+
+@layer base {
+  html {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+    background:
+      radial-gradient(circle at top left, rgba(20, 184, 166, 0.16), transparent 26%),
+      radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.16), transparent 24%),
+      var(--bg);
+    color: var(--text);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto max-w-7xl px-6;
+  }
+
+  .panel {
+    @apply rounded-[28px] border shadow-[0_32px_80px_-48px_rgba(15,23,42,0.55)] backdrop-blur-xl;
+    background: var(--card);
+    border-color: var(--border);
+  }
+
+  .panel-strong {
+    @apply rounded-[32px] border;
+    background: var(--card-strong);
+    border-color: var(--border);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5;
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium transition hover:-translate-y-0.5;
+    border-color: var(--border);
+    background: var(--card);
+    color: var(--text);
+  }
+
+  .input-field {
+    @apply w-full rounded-2xl border px-4 py-3 outline-none transition;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .input-field:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+  }
+
+  .kpi {
+    @apply rounded-[24px] border p-5;
+    background: var(--card);
+    border-color: var(--border);
+  }
+
+  .status-pill {
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+}

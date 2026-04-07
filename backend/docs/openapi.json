@@ -1,0 +1,18 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CertiBlock API",
+    "version": "1.0.0",
+    "description": "Blockchain-based certificate issuance, verification, and administration API."
+  },
+  "paths": {
+    "/api/auth/login": { "post": { "summary": "Login user" } },
+    "/api/auth/register": { "post": { "summary": "Register verifier" } },
+    "/api/certificates/issue": { "post": { "summary": "Issue certificate" } },
+    "/api/certificates/batch-issue": { "post": { "summary": "Issue certificates in batch" } },
+    "/api/certificates/verify/{id}": { "get": { "summary": "Verify certificate by ID" } },
+    "/api/certificates/verify-file": { "post": { "summary": "Verify certificate by uploaded file" } },
+    "/api/certificates/{id}/revoke": { "post": { "summary": "Revoke certificate" } },
+    "/api/users": { "get": { "summary": "List users" }, "post": { "summary": "Create user" } }
+  }
+}
