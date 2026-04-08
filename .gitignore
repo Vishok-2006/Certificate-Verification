@@ -4,3 +4,7 @@ build/
 .cache/
 .env
 *.log
+.opencode
+.agent
+.kilocode
+/openspec

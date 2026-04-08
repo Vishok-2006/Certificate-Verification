@@ -1,6 +1,9 @@
 import hre from 'hardhat';
 
 async function main() {
+  console.log('Deploying to network:', hre.network.name);
+  console.log('Network RPC URL:', hre.network.config.url);
+
   const [deployer] = await hre.ethers.getSigners();
   const CertificateRegistry = await hre.ethers.getContractFactory('CertificateRegistry');
   const registry = await CertificateRegistry.deploy();

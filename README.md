@@ -46,6 +46,8 @@ cp frontend/.env.example frontend/.env
 cp blockchain/.env.example blockchain/.env
 ```
 
+Create a root `.env` file in the project root with Polygon deployment values for Hardhat. This file is used by `blockchain/hardhat.config.js` when running deployment commands from the blockchain package.
+
 ### Backend
 
 Required minimum values:
@@ -74,7 +76,7 @@ Optional integrations:
 
 - `SEPOLIA_RPC_URL`
 - `POLYGON_AMOY_RPC_URL`
-- `DEPLOYER_PRIVATE_KEY`
+- `PRIVATE_KEY`
 
 ## Local development
 
@@ -90,7 +92,14 @@ Start PostgreSQL locally, then deploy the smart contract:
 
 ```bash
 cd blockchain
-npx hardhat run scripts/deploy.js --network sepolia
+npx hardhat run scripts/deploy.js --network amoy
+```
+
+Or use the package script from `blockchain`:
+
+```bash
+cd blockchain
+npm run deploy:amoy
 ```
 
 Copy the deployed address into `backend/.env`, then start apps:

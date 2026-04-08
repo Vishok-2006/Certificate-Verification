@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/devil/Placement/Block project/blockchain/contracts/CertificateRegistry.sol": {
-      "lastModificationDate": 1774173150390,
+    "/home/devil/Placement/Projects/Block project/blockchain/contracts/CertificateRegistry.sol": {
+      "lastModificationDate": 1775317426870,
       "contentHash": "59fb633cb7232234f13d5c59e218ebc8",
       "sourceName": "contracts/CertificateRegistry.sol",
       "solcConfig": {
